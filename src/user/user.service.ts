@@ -1,3 +1,4 @@
+import { GoogleInput } from './dto/google.input.dto';
 import { User } from './entities/user.entity';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -34,5 +35,18 @@ export class UserService {
 
   remove(id: string) {
     return this.userRepo.delete(id);
+  }
+
+  createByGoogle(user: GoogleInput) {
+    const create = this.userRepo.create(user);
+    return this.userRepo.save(create);
+  }
+
+  updateByGoogle(googleId: string, user: GoogleInput) {
+    return this.userRepo.update({googleId}, user)
+  }
+
+  findByGoogle(googleId: string ) {
+    return this.userRepo.findOne({googleId})
   }
 }

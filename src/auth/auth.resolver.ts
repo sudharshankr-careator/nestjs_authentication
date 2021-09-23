@@ -11,7 +11,6 @@ export class AuthResolver {
     @Mutation(() => String)
     async login(@Args('login') login: LoginDto) {
         const user = await this.authService.validateUser(login)
-
 }
 
 

@@ -8,7 +8,7 @@ import {PassportStrategy} from '@nestjs/passport'
 export class LocalStrategy extends PassportStrategy(Strategy) {
     constructor (private authService: AuthService) {
         super({
-            userNameField: "emial",
+            userNameField: "email",
             passwordField: "password"
         })
     }
